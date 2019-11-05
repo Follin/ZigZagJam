@@ -33,10 +33,11 @@ public class PlayerController : MonoBehaviour
             SwitchDirection();
 
         RaycastHit hit;
-        if (!Physics.Raycast(_fallCheckStart.position, -transform.up, out hit, Mathf.Infinity))
-        {
+        if (!Physics.Raycast(_fallCheckStart.position, -transform.up, out hit, Mathf.Infinity))        
             _anim.SetTrigger("isFalling");
-        }
+
+        if (transform.position.y < -2f)
+            _gameManager.EndGame();
 
 
     }
