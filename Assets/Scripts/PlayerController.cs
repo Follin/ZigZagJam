@@ -2,7 +2,8 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Transform _fallCheckStart;
+    [SerializeField] Transform _fallCheckStartLeft;
+    [SerializeField] Transform _fallCheckStartRight;
     [Tooltip("Point the game restarts after player is falling")]
     [SerializeField] float _restartPoint = -2f;
 
@@ -38,7 +39,8 @@ public class PlayerController : MonoBehaviour
             SwitchDirection();
 
         RaycastHit hit;
-        if (!Physics.Raycast(_fallCheckStart.position, -transform.up, out hit, Mathf.Infinity))        
+        if (!Physics.Raycast(_fallCheckStartLeft.position, -transform.up, out hit, Mathf.Infinity) &&
+                !Physics.Raycast(_fallCheckStartRight.position, -transform.up, out hit, Mathf.Infinity))        
             _anim.SetTrigger("isFalling");
 
         if (transform.position.y < _restartPoint)
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             _gameManager.IncreaseScore();
 
-            GameObject particle = Instantiate(_particleEffect, _fallCheckStart.transform.position, Quaternion.identity);
+            GameObject particle = Instantiate(_particleEffect, transform.position, Quaternion.identity);
             Destroy(particle, 2f);
             Destroy(other.gameObject);
         }
