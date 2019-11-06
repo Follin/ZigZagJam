@@ -7,15 +7,13 @@ public class GameManager : MonoBehaviour
     private int Score = 0;
 
     [SerializeField] TextMeshProUGUI _scoreText;
-    [SerializeField] TextMeshProUGUI _highscoreText;
-      
+    [SerializeField] TextMeshProUGUI _highscoreText;      
 
     private void Awake()
     {
         if (!_highscoreText) Debug.LogError("No score text in " + this);
         _highscoreText.text = "Highscore: " + GetHighscore;
     }
-
     private void Start()
     {
         FindObjectOfType<Road>().StartBuilding();

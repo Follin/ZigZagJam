@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Point the game restarts after player is falling")]
     [SerializeField] float _restartPoint = -2f;
+    [SerializeField] private float _speed = 1;
+
 
     [SerializeField] GameObject _particleEffect;
 
@@ -17,6 +19,11 @@ public class PlayerController : MonoBehaviour
     private bool _isWalkingright = true;
     private bool _isFalling = false;
 
+    CapsuleCollider _collider;
+
+    [SerializeField] private LayerMask _groundLayer;
+
+
     private void Awake()
     {
         if(!_particleEffect) Debug.LogError("No particle effect in " + this);        
@@ -26,10 +33,15 @@ public class PlayerController : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
     }
 
+    private void Start()
+    {
+        _collider = GetComponent<CapsuleCollider>();
+    }
+
     private void FixedUpdate()
     {       
         _anim.SetTrigger("startGame");
-        _rigidbody.transform.position = transform.position + transform.forward * 2 * Time.deltaTime;
+        _rigidbody.transform.position = transform.position + transform.forward * _speed * Time.deltaTime;
     }
 
     private void Update()
@@ -42,16 +54,12 @@ public class PlayerController : MonoBehaviour
             SwitchDirection();
 
         RaycastHit hit;
-        if (!Physics.Raycast(_fallCheckStartLeft.position, -transform.up, out hit, Mathf.Infinity) &&
-                !Physics.Raycast(_fallCheckStartRight.position, -transform.up, out hit, Mathf.Infinity))
+        if(!Physics.SphereCast(transform.position + Vector3.up, _collider.radius, Vector3.down, out hit, 1000, _groundLayer))    
         {
             _anim.SetTrigger("isFalling");
             _isFalling = true;
         }
-
-
     }
-
     private void SwitchDirection()
     {
         _isWalkingright = !_isWalkingright;
