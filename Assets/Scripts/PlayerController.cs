@@ -4,17 +4,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform _fallCheckStartLeft;
     [SerializeField] Transform _fallCheckStartRight;
+
     [Tooltip("Point the game restarts after player is falling")]
     [SerializeField] float _restartPoint = -2f;
 
     [SerializeField] GameObject _particleEffect;
 
+    private GameManager _gameManager;
     private Rigidbody _rigidbody;
     private Animator _anim;
 
     private bool _isWalkingright = true;
-
-    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -26,9 +26,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        if (!_gameManager.HasStarted) return;
-       
+    {       
         _anim.SetTrigger("startGame");
         _rigidbody.transform.position = transform.position + transform.forward * 2 * Time.deltaTime;
     }
@@ -44,13 +42,11 @@ public class PlayerController : MonoBehaviour
             _anim.SetTrigger("isFalling");
 
         if (transform.position.y < _restartPoint)
-            _gameManager.EndGame();
+            _gameManager.RestartGame();
     }
 
     private void SwitchDirection()
     {
-        if (!_gameManager.HasStarted) return;
-
         _isWalkingright = !_isWalkingright;
 
         if (_isWalkingright)
@@ -61,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Collectable")
+        if(other.CompareTag("Collectable"))
         {
             _gameManager.IncreaseScore();
 
