@@ -444,7 +444,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  _restartPoint: -4
+  _restartPoint: -10
 --- !u!1 &8873523740555171786
 GameObject:
   m_ObjectHideFlags: 0

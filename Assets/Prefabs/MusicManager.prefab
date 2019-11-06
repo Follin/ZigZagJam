@@ -41,8 +41,9 @@ AudioSource:
   m_GameObject: {fileID: 889125592668954600}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6420c96c57f4f2447a0a8ae98f3b3ff1, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 2b112df2cfbcdec4ca901793a506e46b,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 64fc69ab8934fc24184affb36d3aec36, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -51,7 +52,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -118,7 +119,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -140,3 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d9b4a4a1b223348894d2794a3c11da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pitchToAdd: 1
+  _mixer: {fileID: 24100000, guid: 2b112df2cfbcdec4ca901793a506e46b, type: 2}
+  _orginalPitch: 1
+  IsFalling: 0

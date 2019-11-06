@@ -7,7 +7,10 @@ public class GameManager : MonoBehaviour
     private int Score = 0;
 
     [SerializeField] TextMeshProUGUI _scoreText;
-    [SerializeField] TextMeshProUGUI _highscoreText;      
+    [SerializeField] TextMeshProUGUI _highscoreText;
+
+    private SoundManager _soundManager;
+
 
     private void Awake()
     {
@@ -16,6 +19,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        _soundManager = FindObjectOfType<SoundManager>();
         FindObjectOfType<Road>().StartBuilding();
 
         if (!_scoreText) Debug.LogError("No score text in " + this);        
@@ -27,7 +31,12 @@ public class GameManager : MonoBehaviour
             EndGame();
     }
 
-    public void RestartGame() => SceneManager.LoadScene(1);
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+        _soundManager.IsFalling = false;
+        _soundManager.ResetPitch();
+    }
     public void EndGame() => SceneManager.LoadScene(0);
 
     public void IncreaseScore()

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
 
     private GameManager _gameManager;
+    private SoundManager _soundManager;
     private Rigidbody _rigidbody;
     private Animator _anim;
 
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<CapsuleCollider>();
+        _soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void FixedUpdate()
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             _anim.SetTrigger("isFalling");
             _isFalling = true;
+            _soundManager.IsFalling = true;
         }
     }
     private void SwitchDirection()
@@ -91,6 +94,7 @@ public class PlayerController : MonoBehaviour
         if (_timer >= _timerToIncreaseSpeed)
         {
             _speed += (_addedSpeed * Time.deltaTime);
+            _soundManager.AddPitch();
             _timer = 0;
         }
     }
