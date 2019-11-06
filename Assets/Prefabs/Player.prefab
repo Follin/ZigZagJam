@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: FallCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758712757529163929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.453, z: 0}
+  m_LocalPosition: {x: 0, y: 0.356, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8877532542246551750}
@@ -406,6 +406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallCheckStart: {fileID: 2115279339026092240}
+  _restartPoint: -4
+  _particleEffect: {fileID: 3828219236812009383, guid: 8c0e0e8046cb5414b9fa38dbbea6ec55,
+    type: 3}
 --- !u!1 &8873523740555171786
 GameObject:
   m_ObjectHideFlags: 0
