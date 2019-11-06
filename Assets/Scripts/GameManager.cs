@@ -8,13 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI _scoreText;
     [SerializeField] TextMeshProUGUI _highscoreText;
-
-    [HideInInspector]
-    public void StartGame()
-    {
-        FindObjectOfType<Road>().StartBuilding();
-    }
-
+      
 
     private void Awake()
     {
@@ -24,14 +18,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(!_scoreText) Debug.LogError("No score text in " + this);        
+        FindObjectOfType<Road>().StartBuilding();
+
+        if (!_scoreText) Debug.LogError("No score text in " + this);        
         _scoreText.text = "Score: 0";
     }
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-            StartGame();
-
+    {       
         if (Input.GetKeyDown(KeyCode.Escape))
             EndGame();
     }

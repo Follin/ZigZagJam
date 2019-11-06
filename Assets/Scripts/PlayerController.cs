@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Animator _anim;
 
     private bool _isWalkingright = true;
+    private bool _isFalling = false;
 
     private void Awake()
     {
@@ -33,16 +34,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (transform.position.y < _restartPoint)
+            _gameManager.RestartGame();
+
+        if (_isFalling) return;
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             SwitchDirection();
 
         RaycastHit hit;
         if (!Physics.Raycast(_fallCheckStartLeft.position, -transform.up, out hit, Mathf.Infinity) &&
-                !Physics.Raycast(_fallCheckStartRight.position, -transform.up, out hit, Mathf.Infinity))        
+                !Physics.Raycast(_fallCheckStartRight.position, -transform.up, out hit, Mathf.Infinity))
+        {
             _anim.SetTrigger("isFalling");
+            _isFalling = true;
+        }
 
-        if (transform.position.y < _restartPoint)
-            _gameManager.RestartGame();
+
     }
 
     private void SwitchDirection()

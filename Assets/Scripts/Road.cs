@@ -28,7 +28,7 @@ public class Road : MonoBehaviour
             newRoadPart.transform.GetChild(0).gameObject.SetActive(true);
     }
     public void StartBuilding()
-    {
+    {        
         InvokeRepeating("CreateNewRoadPart", 1f, 0.5f);
     }
 
