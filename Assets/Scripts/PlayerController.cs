@@ -2,15 +2,17 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Transform _fallCheckStartLeft;
-    [SerializeField] Transform _fallCheckStartRight;
+    [Header("Player Speed")]
+    [SerializeField] private float _speed = 1;
+    [SerializeField] private float _timerToIncreaseSpeed = 5;
+    [SerializeField] private float _addedSpeed = 1;
 
+    [Header("Other Settings")]
+    [SerializeField] GameObject _particleEffect;
+    [SerializeField] private LayerMask _groundLayer;
     [Tooltip("Point the game restarts after player is falling")]
     [SerializeField] float _restartPoint = -2f;
-    [SerializeField] private float _speed = 1;
 
-
-    [SerializeField] GameObject _particleEffect;
 
     private GameManager _gameManager;
     private Rigidbody _rigidbody;
@@ -21,8 +23,7 @@ public class PlayerController : MonoBehaviour
 
     CapsuleCollider _collider;
 
-    [SerializeField] private LayerMask _groundLayer;
-
+    float _timer = 0;
 
     private void Awake()
     {
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        IncreaseSpeed();
+
         if (transform.position.y < _restartPoint)
             _gameManager.RestartGame();
 
@@ -79,6 +82,16 @@ public class PlayerController : MonoBehaviour
             GameObject particle = Instantiate(_particleEffect, transform.position, Quaternion.identity);
             Destroy(particle, 2f);
             Destroy(other.gameObject);
+        }
+    }
+
+    void IncreaseSpeed()
+    {
+        _timer += Time.deltaTime;
+        if (_timer >= _timerToIncreaseSpeed)
+        {
+            _speed += (_addedSpeed * Time.deltaTime);
+            _timer = 0;
         }
     }
 }

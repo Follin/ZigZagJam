@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2074323332
 Transform:
   m_ObjectHideFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2115279339026092240
 Transform:
   m_ObjectHideFlags: 0
@@ -436,12 +436,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35837b05f3c87e84b8e2052483fdead1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fallCheckStartLeft: {fileID: 2115279339026092240}
-  _fallCheckStartRight: {fileID: 2074323332}
-  _restartPoint: -4
   _speed: 2
+  _timerToIncreaseSpeed: 5
+  _addedSpeed: 20
   _particleEffect: {fileID: 3828219236812009383, guid: 8c0e0e8046cb5414b9fa38dbbea6ec55,
     type: 3}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _restartPoint: -4
 --- !u!1 &8873523740555171786
 GameObject:
   m_ObjectHideFlags: 0
