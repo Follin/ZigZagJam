@@ -31,6 +31,9 @@ public class Road : MonoBehaviour
             newRoadPart.transform.GetChild(0).gameObject.SetActive(true);
             newRoadPart.GetComponent<RoadPart>().SetData(GetRandomData);
 
+            AudioClip soundData = newRoadPart.GetComponent<RoadPart>().GetData.Clip;
+            newRoadPart.GetComponent<RoadPart>().SetAudio(soundData);
+
             Color colorData = newRoadPart.GetComponent<RoadPart>().GetData.Color;
             newRoadPart.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = colorData;            
         }

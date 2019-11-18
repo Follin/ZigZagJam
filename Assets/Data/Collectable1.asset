@@ -16,3 +16,4 @@ MonoBehaviour:
   Score: 1
   Particles: {fileID: 2397820411057915245, guid: 8c0e0e8046cb5414b9fa38dbbea6ec55,
     type: 3}
+  Clip: {fileID: 8300000, guid: 4816bd2fe800ee34db68d5a8761f522a, type: 3}

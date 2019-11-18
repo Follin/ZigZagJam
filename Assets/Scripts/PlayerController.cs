@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private SoundManager _soundManager;
     private Rigidbody _rigidbody;
     private Animator _anim;
+    private AudioSource _source;
 
     private bool _isWalkingright = true;
     private bool _isFalling = false;
@@ -29,11 +30,10 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        //if(!_particleEffect) Debug.LogError("No particle effect in " + this);        
-
         _rigidbody = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
         _gameManager = FindObjectOfType<GameManager>();
+        _source = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -85,7 +85,14 @@ public class PlayerController : MonoBehaviour
         if(other.CompareTag("Collectable"))
         {
             RoadPart roadPart = other.gameObject.GetComponentInParent<RoadPart>();
-            _gameManager.IncreaseScore(roadPart.Data.Score);
+
+            if(roadPart.GetData.Score > 1)
+                _source.pitch = Random.Range(1.5f, 2.5f);
+            else
+                _source.pitch = Random.Range(0.5f, 1f);
+
+            _source.PlayOneShot(roadPart.GetAudio);
+            _gameManager.IncreaseScore(roadPart.GetData.Score);
 
             GameObject particle = Instantiate(roadPart.GetData.Particles.gameObject, transform.position, Quaternion.identity);
             Destroy(particle, 2f);
