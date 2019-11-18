@@ -3,7 +3,6 @@
 public class RoadPart : MonoBehaviour
 {
     bool _hasPassed = false;
-
     private void Update()
     {
         if(_hasPassed)

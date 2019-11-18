@@ -12,8 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [Tooltip("Point the game restarts after player is falling")]
     [SerializeField] float _restartPoint = -2f;
-
-
+    
     private GameManager _gameManager;
     private SoundManager _soundManager;
     private Rigidbody _rigidbody;
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour
         IncreaseSpeed();
 
         if (transform.position.y < _restartPoint)
-            _gameManager.RestartGame();
+            _gameManager.Death();
 
         if (_isFalling) return;
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))

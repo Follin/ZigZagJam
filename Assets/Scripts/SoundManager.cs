@@ -16,7 +16,6 @@ public class SoundManager : MonoBehaviour
     {
         if (!_instance)
             _instance = this;
-
         else
             Destroy(gameObject);
 
@@ -26,7 +25,6 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         _currentPitch = _orginalPitch;
-
         _mixer.SetFloat("MyPitch", _currentPitch);
     }
 
@@ -45,7 +43,6 @@ public class SoundManager : MonoBehaviour
     {
         _currentPitch += (_pitchToAdd * Time.deltaTime);
         _mixer.SetFloat("MyPitch", _currentPitch);
-
     }
 
     public void ResetPitch()
@@ -53,5 +50,4 @@ public class SoundManager : MonoBehaviour
         _currentPitch = _orginalPitch;
         _mixer.SetFloat("MyPitch", _currentPitch);
     }   
-
 }
