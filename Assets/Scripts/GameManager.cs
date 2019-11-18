@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     private int Score = 0;
+
+    [SerializeField] PlayerController _player;
 
     [Header("In Game")]
     [SerializeField] TextMeshProUGUI _scoreText;
@@ -15,8 +20,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _deathScoreText;
     [SerializeField] TextMeshProUGUI _deathHighscoreText;
     [SerializeField] TextMeshProUGUI _youGotHighscoreText;
+    [SerializeField] Button _selectedButton;
 
     private SoundManager _soundManager;
+
+    public bool StopUpdating = false;
 
     private void Awake()
     {
@@ -38,9 +46,11 @@ public class GameManager : MonoBehaviour
         _deathCanvas.SetActive(false);
     }
     private void Update()
-    {       
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
             EndGame();
+
+        if (_player.IsDead) Death();
     }
 
     public void RestartGame()
@@ -83,12 +93,29 @@ public class GameManager : MonoBehaviour
     }
     private int GetHighscore => PlayerPrefs.GetInt("Highscore");
 
-    public void Death() => SetInGameUI(false);    
-
+    private void Death()
+    {
+        SetInGameUI(false);
+        FindObjectOfType<Road>().StopBuilding();
+    }
+    
     private void SetInGameUI(bool active)
     {
         _scoreText.gameObject.SetActive(active);
         _highscoreText.gameObject.SetActive(active);
         _deathCanvas.SetActive(!active);
+
+        if (!active && _player.IsDead && !StopUpdating)        
+            StartCoroutine(Coroutine());   
     }
+    IEnumerator Coroutine()
+    {
+        _selectedButton.OnSelect(null);
+        EventSystem.current.SetSelectedGameObject(_selectedButton.gameObject);
+
+        yield return new WaitForEndOfFrame();
+        _player.IsDead = false;
+        StopUpdating = true;
+    }
+
 }

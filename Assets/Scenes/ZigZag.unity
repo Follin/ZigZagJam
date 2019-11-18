@@ -2560,12 +2560,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf10935fb5699f40b7cd90d45847189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 8873073550224230024}
   _scoreText: {fileID: 751996628}
   _highscoreText: {fileID: 1355069314}
   _deathCanvas: {fileID: 480874242}
   _deathScoreText: {fileID: 2077865147}
   _deathHighscoreText: {fileID: 1674565575}
   _youGotHighscoreText: {fileID: 617856591}
+  _selectedButton: {fileID: 1114063032}
 --- !u!4 &1908454815
 Transform:
   m_ObjectHideFlags: 0
@@ -3208,3 +3210,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b2c4eaccad38fd4ea5eb3e513045355, type: 3}
+--- !u!114 &8873073550224230024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1824338925036230, guid: 3b2c4eaccad38fd4ea5eb3e513045355,
+    type: 3}
+  m_PrefabInstance: {fileID: 8873073550224230023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35837b05f3c87e84b8e2052483fdead1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

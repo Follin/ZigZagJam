@@ -25,11 +25,11 @@ public class Road : MonoBehaviour
         _roadCount++;
 
         if (_roadCount % 5 == 0)
+        {
+            //newRoadPart.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
             newRoadPart.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
-    public void StartBuilding()
-    {        
-        InvokeRepeating("CreateNewRoadPart", 0.1f, 0.1f);
-    }       
-
+    public void StartBuilding() => InvokeRepeating("CreateNewRoadPart", 0.1f, 0.1f);        
+    public void StopBuilding() => CancelInvoke("CreateNewRoadPart");
 }

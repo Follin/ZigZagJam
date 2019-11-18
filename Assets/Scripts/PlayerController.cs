@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private bool _isWalkingright = true;
     private bool _isFalling = false;
 
+    [HideInInspector] public bool IsDead = false;
+
     CapsuleCollider _collider;
 
     float _timer = 0;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         _collider = GetComponent<CapsuleCollider>();
         _soundManager = FindObjectOfType<SoundManager>();
+        IsDead = false;
     }
 
     private void FixedUpdate()
@@ -48,10 +51,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        IncreaseSpeed();
+        if (IsDead && _gameManager.StopUpdating) return;
+        else if(transform.position.y < _restartPoint)        
+            IsDead = true;
 
-        if (transform.position.y < _restartPoint)
-            _gameManager.Death();
+        IncreaseSpeed();                
+        
 
         if (_isFalling) return;
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))

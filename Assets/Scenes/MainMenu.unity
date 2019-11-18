@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6ca0fec1a1706448c777d4fa00ef5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectedButton: {fileID: 1613262306}
 --- !u!1 &361387927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1613262304}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1703922850
