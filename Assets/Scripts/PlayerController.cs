@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {       
+    {
         _anim.SetTrigger("startGame");
         _rigidbody.transform.position = transform.position + transform.forward * _speed * Time.deltaTime;
     }
