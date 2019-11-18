@@ -3,6 +3,8 @@
 public class RoadPart : MonoBehaviour
 {
     bool _hasPassed = false;
+    public CollectableData Data;
+
     private void Update()
     {
         if(_hasPassed)
@@ -16,5 +18,9 @@ public class RoadPart : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))        
             _hasPassed = true;            
     }
+
+    public void SetData(CollectableData data) => Data = data;
+    public CollectableData GetData => Data;
+    
 }
 

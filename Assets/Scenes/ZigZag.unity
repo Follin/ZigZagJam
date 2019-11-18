@@ -418,6 +418,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 642667552848439658, guid: e2fd0c83910edb8469ffd69bdd759be9,
+        type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 5157d6b14a17c9b4aaa20843e69120b5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2fd0c83910edb8469ffd69bdd759be9, type: 3}
 --- !u!4 &278893881 stripped
@@ -1232,6 +1238,9 @@ MonoBehaviour:
     type: 3}
   _lastPosition: {x: 0, y: 0, z: 7.09}
   _offset: 0.71
+  _collectableData:
+  - {fileID: 11400000, guid: 5157d6b14a17c9b4aaa20843e69120b5, type: 2}
+  - {fileID: 11400000, guid: 4e13bebdbba1a4d47ab8ec73823d9b19, type: 2}
 --- !u!1001 &1047337879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2568,6 +2577,7 @@ MonoBehaviour:
   _deathHighscoreText: {fileID: 1674565575}
   _youGotHighscoreText: {fileID: 617856591}
   _selectedButton: {fileID: 1114063032}
+  StopUpdating: 0
 --- !u!4 &1908454815
 Transform:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ public class Road : MonoBehaviour
     [SerializeField] GameObject _roadPrefab;
     [SerializeField] Vector3 _lastPosition;
     [SerializeField] float _offset = 0.71f;
+    [Header("Collectable Data")]
+    [SerializeField] CollectableData[] _collectableData;
 
     int _roadCount = 0;
 
@@ -26,10 +28,16 @@ public class Road : MonoBehaviour
 
         if (_roadCount % 5 == 0)
         {
-            //newRoadPart.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
             newRoadPart.transform.GetChild(0).gameObject.SetActive(true);
+            newRoadPart.GetComponent<RoadPart>().SetData(GetRandomData);
+
+            Color colorData = newRoadPart.GetComponent<RoadPart>().GetData.Color;
+            newRoadPart.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = colorData;            
         }
     }
     public void StartBuilding() => InvokeRepeating("CreateNewRoadPart", 0.1f, 0.1f);        
     public void StopBuilding() => CancelInvoke("CreateNewRoadPart");
+
+    private CollectableData GetRandomData => _collectableData[Random.Range(0, _collectableData.Length)];
+    
 }

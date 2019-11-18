@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private SoundManager _soundManager;
 
-    public bool StopUpdating = false;
+    [HideInInspector] public bool StopUpdating = false;
 
     private void Awake()
     {
@@ -70,9 +70,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void IncreaseScore()
+    public void IncreaseScore(int score)
     {
-        Score++;
+        Score += score;
         _scoreText.text = "Score: " + Score;
         _deathScoreText.text = "Score: " + Score;
 

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _addedSpeed = 1;
 
     [Header("Other Settings")]
-    [SerializeField] GameObject _particleEffect;
+    //[SerializeField] GameObject _particleEffect;
     [SerializeField] private LayerMask _groundLayer;
     [Tooltip("Point the game restarts after player is falling")]
     [SerializeField] float _restartPoint = -2f;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if(!_particleEffect) Debug.LogError("No particle effect in " + this);        
+        //if(!_particleEffect) Debug.LogError("No particle effect in " + this);        
 
         _rigidbody = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
@@ -84,9 +84,10 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("Collectable"))
         {
-            _gameManager.IncreaseScore();
+            RoadPart roadPart = other.gameObject.GetComponentInParent<RoadPart>();
+            _gameManager.IncreaseScore(roadPart.Data.Score);
 
-            GameObject particle = Instantiate(_particleEffect, transform.position, Quaternion.identity);
+            GameObject particle = Instantiate(roadPart.GetData.Particles.gameObject, transform.position, Quaternion.identity);
             Destroy(particle, 2f);
             Destroy(other.gameObject);
         }
