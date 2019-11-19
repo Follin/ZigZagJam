@@ -11,8 +11,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9316b327c78797d42bc3561c4d94fedb, type: 3}
   m_Name: Collectable1
-  m_EditorClassIdentifier: 
-  Color: {r: 0, g: 0.4457605, b: 1, a: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::CollectableData
+  Color: {r: 0, g: 0.25355005, b: 1, a: 0}
   Score: 1
   Particles: {fileID: 2397820411057915245, guid: 8c0e0e8046cb5414b9fa38dbbea6ec55,
     type: 3}

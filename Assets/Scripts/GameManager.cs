@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _deathCanvas;
     [SerializeField] TextMeshProUGUI _deathScoreText;
     [SerializeField] TextMeshProUGUI _deathHighscoreText;
-    [SerializeField] TextMeshProUGUI _youGotHighscoreText;
+    [SerializeField] GameObject _youGotHighscoreText;
     [SerializeField] Button _selectedButton;
 
     private SoundManager _soundManager;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         _scoreText.text = "Score: 0";
         _deathScoreText.text = "Score: 0";
 
-        _youGotHighscoreText.gameObject.SetActive(false);
+        _youGotHighscoreText.SetActive(false);
         _deathScoreText.gameObject.SetActive(true);
         _deathCanvas.SetActive(false);
     }
@@ -81,12 +81,12 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Highscore", Score);
             _highscoreText.text = "Highscore: " + Score;
             _deathHighscoreText.text = "Highscore: " + Score;
-            _youGotHighscoreText.gameObject.SetActive(true);
+            _youGotHighscoreText.SetActive(true);
             _deathScoreText.gameObject.SetActive(false);
         }
         else
         {
-            _youGotHighscoreText.gameObject.SetActive(false);
+            _youGotHighscoreText.SetActive(false);
             _deathScoreText.gameObject.SetActive(true);
         }
 
