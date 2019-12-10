@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// Make sure the platform is set to Android (to get mobile window)
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -95,22 +96,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Collectable"))
-        {
-            RoadPart roadPart = other.gameObject.GetComponentInParent<RoadPart>();
+        if(!other.CompareTag("Collectible")) return;
 
-            if(roadPart.GetData.Score > 1)
-                _source.pitch = Random.Range(1.5f, 2.5f);
-            else
-                _source.pitch = Random.Range(0.5f, 1f);
+        RoadPart roadPart = other.gameObject.GetComponentInParent<RoadPart>();
 
-            _source.PlayOneShot(roadPart.GetAudio);
-            _gameManager.IncreaseScore(roadPart.GetData.Score);
+        if (roadPart.GetData.Score > 1)
+            _source.pitch = Random.Range(1.5f, 2.5f);
+        else
+            _source.pitch = Random.Range(0.5f, 1f);
 
-            GameObject particle = Instantiate(roadPart.GetData.Particles.gameObject, transform.position, Quaternion.identity);
-            Destroy(particle, 2f);
-            Destroy(other.gameObject);
-        }
+        _source.PlayOneShot(roadPart.GetAudio);
+        _gameManager.IncreaseScore(roadPart.GetData.Score);
+
+        GameObject particle = Instantiate(roadPart.GetData.Particles.gameObject, transform.position, Quaternion.identity);
+        Destroy(particle, 2f);
+        Destroy(other.gameObject);
+
     }
 
     void IncreaseSpeed()
