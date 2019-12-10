@@ -59,8 +59,21 @@ public class PlayerController : MonoBehaviour
         
 
         if (_isFalling) return;
+
+        // For mobile
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.tapCount > 0 && touch.phase == TouchPhase.Began)
+                SwitchDirection();
+        }
+
+        // For PC
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             SwitchDirection();
+
+
 
         RaycastHit hit;
         if(!Physics.SphereCast(transform.position + Vector3.up, _collider.radius, Vector3.down, out hit, 1000, _groundLayer))    
