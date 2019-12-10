@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9316b327c78797d42bc3561c4d94fedb, type: 3}
-  m_Name: Collectable2
+  m_Script: {fileID: 0}
+  m_Name: Collectable
   m_EditorClassIdentifier: Assembly-CSharp::CollectableData
-  Color: {r: 1, g: 0, b: 0, a: 0}
-  Score: 3
+  Color: {r: 1, g: 0, b: 0.22844887, a: 0}
+  Score: 2
   Particles: {fileID: 2397820411057915245, guid: 2acbdaba6d7eebd408ada8f8a309fa35,
     type: 3}
   Clip: {fileID: 8300000, guid: 4816bd2fe800ee34db68d5a8761f522a, type: 3}

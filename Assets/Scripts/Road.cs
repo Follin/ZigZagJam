@@ -5,7 +5,7 @@ public class Road : MonoBehaviour
     [SerializeField] GameObject _roadPrefab;
     [SerializeField] Vector3 _lastPosition;
     [SerializeField] float _offset = 0.71f;
-    [Header("Collectable Data")]
+    [Header("Collectible Data")]
     [SerializeField] CollectableData[] _collectableData;
 
     int _roadCount = 0;
@@ -40,7 +40,6 @@ public class Road : MonoBehaviour
     }
     public void StartBuilding() => InvokeRepeating("CreateNewRoadPart", 0.1f, 0.1f);        
     public void StopBuilding() => CancelInvoke("CreateNewRoadPart");
-
     private CollectableData GetRandomData => _collectableData[Random.Range(0, _collectableData.Length)];
     
 }

@@ -422,8 +422,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 5157d6b14a17c9b4aaa20843e69120b5,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2fd0c83910edb8469ffd69bdd759be9, type: 3}
 --- !u!4 &278893881 stripped
@@ -1177,8 +1176,8 @@ MonoBehaviour:
   _lastPosition: {x: 0, y: 0, z: 7.09}
   _offset: 0.71
   _collectableData:
+  - {fileID: 11400000, guid: a9d459b188fa34546bbf34f573845532, type: 2}
   - {fileID: 11400000, guid: 5157d6b14a17c9b4aaa20843e69120b5, type: 2}
-  - {fileID: 11400000, guid: 3bd3f17a31be0d8429074ea3ce85e194, type: 2}
 --- !u!1001 &1047337879
 PrefabInstance:
   m_ObjectHideFlags: 0
